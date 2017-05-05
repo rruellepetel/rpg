@@ -74,7 +74,6 @@ class TestInventory(unittest.TestCase):
         inventory.set_item(food)
         self.assertTrue(food in inventory.items)
 
-
     def testInventoryGetItem(self):
         inventory = Inventory(30)
         food = Food(10, 42)
@@ -82,6 +81,30 @@ class TestInventory(unittest.TestCase):
         inventory.set_item(food)
         res = inventory.get_item(food)
         self.assertEqual(food, res)
+
+    def testInventoryDelItem(self):
+        inventory = Inventory(30)
+        food = Food(10, 42)
+        food2 = Food(10, 42)
+        inventory.set_item(food)
+
+        res = inventory.del_item(food)
+        self.assertTrue(res)
+        self.assertTrue(food not in inventory.items)
+
+        res = inventory.del_item(food2)
+        self.assertFalse(res)
+
+    def testInventoryFull(self):
+        inventory = Inventory(30)
+        res = inventory.set_item(Food(10, 42))
+        self.assertTrue(res)
+        res = inventory.set_item(Food(10, 42))
+        self.assertTrue(res)
+        food = Food(15, 42)
+        res = inventory.set_item(Food(15, 42))
+        self.assertFalse(res)
+        self.assertFalse(food in inventory.items)
 
 
 if __name__ == '__main__':
