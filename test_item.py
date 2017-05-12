@@ -4,7 +4,6 @@ from core.item import Item, Weapon, Rock, Armor, Shield, Helmet, Food, Inventory
 
 import unittest
 
-
 class TestItems(unittest.TestCase):
 
     def testItemConstructor(self):

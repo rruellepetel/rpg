@@ -18,31 +18,31 @@ class Character(object):
     def die(self):
         pass
 
-    def received_attack(self, damage):
+    def receive_attack(self, damage):
         self.health -= damage
 
 
 class Player(Character):
 
     def __init__(self,health,xp):
-        Character.__init__(health, xp)
-        self.inventory = Inventory(50)
+        Character.__init__(self, health, xp)
+        self.inventory = Inventory(20)
 
     def pick(self, item):
-        self.inventory.add_item(item)
+        self.inventory.set_item(item)
 
     def drop(self, item):
-        self.inventory.remove_item(item)
+        self.inventory.del_item(item)
 
-    def fight(self, character):
-        damage = 0
-        character.received_attack(damage)
+    def fight(self, enemy):
+        damage = 10
+        enemy.receive_attack(damage)
 
     def received_attack(self, damage):
-        Character.received_attack(self, damage)
+        Character.receive_attack(self, damage)
 
 
 class Chicken(Character):
 
     def __init__(self):
-        Character.__init__(30, 1)
+        Character.__init__(self, 30, 1)

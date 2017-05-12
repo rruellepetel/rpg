@@ -52,14 +52,22 @@ class Inventory(object):
         self.items = []
 
     def get_item(self, item):
+        
         if item in self.items:
             return item
         return None
 
     def set_item(self, item):
-        self.items.append(item)
+        invent_weight = sum(item.weight for item in self.items)
+
+        if invent_weight + item.weight <= self.size:
+            self.items.append(item)
+            return True
+        return False
+
 
     def del_item(self, item):
+
         if item in self.items:
             self.items.pop(self.items.index(item))
             return True
