@@ -3,10 +3,7 @@
 
 from core.board import Board, Cell
 
-
-
 import unittest
-
 
 
 class TestBoard(unittest.TestCase):
@@ -49,8 +46,6 @@ class TestBoard(unittest.TestCase):
 
 
 
-
-
     def testBoardGetCell(self):
 
         board = Board(50, 50)
@@ -76,8 +71,6 @@ class TestBoard(unittest.TestCase):
         self.assertTrue(board.get_height() == 24)
 
         self.assertTrue(board.get_width() == 42)
-
-
 
 
 

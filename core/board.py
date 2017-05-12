@@ -13,10 +13,25 @@ class Board(object):
 
             for c in range(col):
 
-                self.grid[l].append(Cell())
+                self.grid[l].append(Cell(l, c))
+
+    def get_grid(self):
+        return self.grid
+
+    def get_cell(self, lig, col):
+        return self.grid[lig][col]
+
+    def get_width(self):
+        return len(self.grid[0])
+
+    def get_height(self):
+        return len(self.grid)
 
 class Cell(object):
 
-    def __init__(self):
+    def __init__(self, lig, col):
 
-        pass
+        self.items = []
+        self.characters = []
+        self.lig = lig
+        self.col = col
