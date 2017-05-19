@@ -38,7 +38,7 @@ class Player(Character):
         damage = 10
         enemy.receive_attack(damage)
 
-    def received_attack(self, damage):
+    def receive_attack(self, damage):
         Character.receive_attack(self, damage)
 
 
