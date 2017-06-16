@@ -18,7 +18,21 @@ class BoardDisplayer(Board) :
 
 
     def wait_move(self):
-        pass
+        lig = self.player.position.lig
+        col = self.player.position.col
+        direction = raw_input("direction ? :")
+        if direction == "z" and lig -1 >= 0 :
+            lig -= 1
+        elif direction == "q" and col -1 >=0 :
+            col -= 1
+        elif direction == "d" and col +1 < self.get_width() :
+            col += 1
+        elif direction == "s" and lig +1 < self.get_height() :
+            lig += 1
+        return self.get_cell(lig, col)
+
+    def move_player(self, cell):
+        self.player.move(cell)
 
     def get_grid(self):
        return self.board.grid
@@ -29,7 +43,7 @@ class BoardDisplayer(Board) :
     def get_width(self):
        return len(self.board.grid[0])
 
-class ConsoleDisplayer(BoardDisplayer) :
+class ConsoleBoard(BoardDisplayer) :
 
     def display(self):
         res = ""
